@@ -1,20 +1,21 @@
 <?php
 
-/**
- * FedEx Shipping Isotope eCommerce and Contao CMS
+/*
+ * Isotope Checkout Address Dropdown - Changes addresses into dropdown selects
  *
- * Copyright (C) 2020 Andrew Stevens Consulting
+ * Copyright (C) 2021 Bright Cloud Studio
  *
- * @package    isotope_shipping_fedex
- * @link       https://andrewstevens.consulting
+ * @package    bright-cloud-studio/isotope-checkout-address-dropdown
+ * @link       https://www.brightcloudstudio.com/
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
 
 
 
-namespace IsotopeFedEx\CheckoutStep;
+namespace IsotopeCheckoutAddressDropdown\CheckoutStep;
 
-use IsotopeFedEx\Model\Shipping\FedEx as FedExShippingModel;
-use IsotopeFedEx\AddressValidator;
+//use IsotopeFedEx\Model\Shipping\FedEx as FedExShippingModel;
+//use IsotopeFedEx\AddressValidator;
 
 use Contao\StringUtil;
 
