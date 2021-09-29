@@ -1,8 +1,8 @@
 {
-    "name":"bright-cloud-studio/add-user-fields",
-    "description":"Adds two custom user fields, image and bio, so they can be displayed on News posts and elsewhere",
+    "name":"bright-cloud-studio/isotope-checkout-address-dropdown",
+    "description":"Changes checkout addresses into dropdown selects",
     "homepage": "http://brightcloudstudio.com/",
-    "keywords":["contao", "add", "user", "fields"],
+    "keywords":["contao", "isotope", "checkout", "address"],
     "type":"contao-module",
     "license":"LGPL-3.0-or-later",
     "authors":[
@@ -17,20 +17,6 @@
     },
     "require-dev": {
         "contao/manager-plugin": "^2.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Bcs\\": [
-                "system/modules/add_user_fields/library/Bcs"
-            ]
-        }
-    },
-    "extra": {
-        "contao": {
-            "sources": {
-                "system/modules/add_user_fields": "system/modules/add_user_fields"
-            }
-        }
     },
     "minimum-stability": "dev"
 }
