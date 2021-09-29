@@ -63,7 +63,7 @@ class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckout
                     'mandatory'   => true,
                     'options'     => $arrOptions,
                     'value'       => $varValue,
-                    'onclick'     => "Isotope.toggleAddressFields(this, '" . $this->getStepClass() . "_new');",
+                    'onchange'     => "Isotope.toggleAddressFields(this, '" . $this->getStepClass() . "_new');",
                     'storeValues' => true,
                     'tableless'   => true,
                 ]
