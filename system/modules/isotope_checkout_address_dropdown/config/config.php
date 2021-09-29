@@ -1,44 +1,13 @@
 <?php
-
-/**
- * FedEx Shipping Isotope eCommerce and Contao CMS
+/*
+ * Isotope Checkout Address Dropdown - Changes addresses into dropdown selects
  *
- * Copyright (C) 2020 Andrew Stevens Consulting
+ * Copyright (C) 2021 Bright Cloud Studio
  *
- * @package    isotope_shipping_fedex
- * @link       https://andrewstevens.consulting
+ * @package    bright-cloud-studio/isotope-checkout-address-dropdown
+ * @link       https://www.brightcloudstudio.com/
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
-
-
-
-/**
- * Backend Modules
- */
-$GLOBALS['BE_MOD']['isotope']['iso_setup']['tables'][] 		= 'tl_iso_fedex_box';
-
-
-/**
- * Models
- */
-$GLOBALS['TL_MODELS']['tl_iso_fedex_box'] 					= 'IsotopeFedEx\Model\ShippingBox';
-
-
-/**
- * Contao Hooks
- */
-$GLOBALS['ISO_HOOKS']['preCheckout'][] 						= array('\IsotopeFedEx\AddressValidator', 'validateAddress'); 
-//$GLOBALS['ISO_HOOKS']['useTaxRate'][] 						= array('\IsotopeFedEx\FedExUtility', 'taxRateInfo'); 
-
-/**
- * Isotope Modules
- */
-$GLOBALS['ISO_MOD']['checkout']['shipping']['tables'][] 	= 'tl_iso_fedex_box';
-
-
-/**
- * Shipping Methods
- */
-\Isotope\Model\Shipping::registerModelType('fedex', 'IsotopeFedEx\Model\Shipping\FedEx');
 
 
 /**
@@ -46,11 +15,7 @@ $GLOBALS['ISO_MOD']['checkout']['shipping']['tables'][] 	= 'tl_iso_fedex_box';
  */
 foreach ($GLOBALS['ISO_CHECKOUTSTEP']['address'] as $index => $value) {
 	if ($value == '\Isotope\CheckoutStep\ShippingAddress' || $value == 'Isotope\CheckoutStep\ShippingAddress') {
-		$GLOBALS['ISO_CHECKOUTSTEP']['address'][$index] = '\IsotopeFedEx\CheckoutStep\ShippingAddressVerify';
+		$GLOBALS['ISO_CHECKOUTSTEP']['address'][$index] = '\IsotopeCheckoutAddressDropdown\CheckoutStep\ShippingAddress';
 	}
 }
-foreach ($GLOBALS['ISO_CHECKOUTSTEP']['shipping'] as $index => $value) {
-	if ($value == '\Isotope\CheckoutStep\ShippingMethod' || $value == 'Isotope\CheckoutStep\ShippingMethod' ) {
-		$GLOBALS['ISO_CHECKOUTSTEP']['shipping'][$index] = '\IsotopeFedEx\CheckoutStep\FedExShippingMethod';
-	}
-}
+
