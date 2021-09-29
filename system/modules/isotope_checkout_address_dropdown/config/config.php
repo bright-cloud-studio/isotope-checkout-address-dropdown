@@ -17,5 +17,8 @@ foreach ($GLOBALS['ISO_CHECKOUTSTEP']['address'] as $index => $value) {
 	if ($value == '\Isotope\CheckoutStep\ShippingAddress' || $value == 'Isotope\CheckoutStep\ShippingAddress') {
 		$GLOBALS['ISO_CHECKOUTSTEP']['address'][$index] = '\IsotopeCheckoutAddressDropdown\CheckoutStep\ShippingAddressDropdown';
 	}
+	else if ($value == '\Isotope\CheckoutStep\BillingAddress' || $value == 'Isotope\CheckoutStep\BillingAddress') {
+		$GLOBALS['ISO_CHECKOUTSTEP']['address'][$index] = '\IsotopeCheckoutAddressDropdown\CheckoutStep\BillingAddressDropdown';
+	}
 }
 
