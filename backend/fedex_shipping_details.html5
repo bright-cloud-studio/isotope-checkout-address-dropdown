@@ -1,0 +1,89 @@
+<?php echo $this->buttons; ?>
+<h2 class="sub_headline">Shipping Details for Order: <?php echo $this->document_number ?> (<?php echo $this->shipping_method; ?>)</h2>
+<form action="<?php echo $this->action; ?>" id="tl_iso_order" class="tl_form" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="FORM_SUBMIT" value="save_tracking_link">
+	<input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+	<div class='shipping_details'>
+		<input type="hidden" name="items_total" id="items_total" value="<?php echo $this->items_total; ?>">
+		<input type="hidden" name="payment_surcharge_total" id="payment_surcharge_total" value="<?php echo $this->payment_surcharge_total; ?>">
+		<input type="hidden" name="tax_surcharge_total" id="tax_surcharge_total" value="<?php echo $this->tax_surcharge_total; ?>">
+		<table class="shipping_details_table">
+			<thead>
+				<tr>
+					<th class="quanitity">Quanitity</th>
+					<th class="item">Item</th>
+					<th class="cost">Cost</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php $counter = 0; ?>
+				<?php foreach($this->items as $item): ?>
+					<?php $counter++; ?>
+					<tr class="item<?php echo ($counter == 1 ? " first" : "") .($counter == count($this->items) ? " last" : ""); ?>">
+						<td class="quantity"><?php echo $item['quantity']; ?>x</td>
+						<td class="item"><?php echo $item['name']; ?></td>
+						<td class="cost"><?php echo $item['totalPrice']; ?></td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+			<tfoot>
+				<tr class='subtotal'>
+					<td class="quanitity"></td>
+					<td class="item">Subtotal:</td>
+					<td class="cost">$<?php echo $this->items_total; ?></td>
+				</tr>
+				<?php foreach ($this->tax_surcharges as $arrSurcharge): ?>
+				<tr class='tax'>
+					<td class="quanitity"></td>
+					<td class="item"><strong>Tax</strong> (<?php echo $arrSurcharge['price']; ?>):</td>
+					<td class="cost">$<?php echo $arrSurcharge['totalPrice']; ?></td>
+				</tr>
+				<?php endforeach; ?>
+				<?php foreach ($this->payment_surcharges as $arrSurcharge): ?>
+				<tr class='payment'>
+					<td class="quanitity"></td>
+					<td class="item">Payment Surcharge:</td>
+					<td class="cost">$<?php echo $arrSurcharge['totalPrice']; ?></td>
+				</tr>
+				<?php endforeach; ?>
+				<tr class='shipping'>
+					<td class="quanitity"></td>
+					<td class="item">Shipping<?php echo ($this->shipping_method ? ' ('.$this->shipping_method.')' : ''); ?>:</td>
+					</td>
+					<td class="cost">$<?php echo $this->shipping_cost;?></td>
+				</tr>
+				<tr class='total'>
+					<td class="quanitity"></td>
+					<td class="item">Total:</td>
+					<td class="cost">$<span id="show_total"><?php echo $this->order_total; ?></span></td>
+				</tr>
+			</tfoot>
+		</table>
+		
+		<div class="tracking_info">
+			<div class="tracking_link">
+				<label for="tracking_link_text">Tracking Link Text:</label><div class="field_wrapper"><input type="text" name="tracking_link_text" class="tracking_link_text" value="<?php echo ($this->tracking_link_text ? $this->tracking_link_text : "Track Shipment"); ?>"></div>
+			</div>
+			<div class="tracking_link">
+				<label for="tracking_link">Tracking Link:</label><div class="field_wrapper"><input type="url" name="tracking_link" class="tracking_link" value="<?php echo $this->tracking_link; ?>"></div>
+			</div>
+		</div>
+		
+		<div class="user_info">
+			<div class="shipping_notes">
+				<label for="shipping_notes">User Instructions:</label>
+				<textarea name="shipping_notes" disabled><?php echo $this->shipping_instructions; ?></textarea>
+			</div>
+			<?php if ($this->notify_user): ?>
+				<span class="notify_user">User requests to be notified of shipping charges before billing is finalized.</span>
+			<?php endif; ?>
+		</div>
+		
+	</div>
+	
+	
+
+	<div class="tl_panel_bottom">
+		<?php if ($this->save_tracking): ?><input name="save_tracking" id="save_tracking" class="tl_submit" accesskey="s" value="Save Tracking Link" type="submit"><?php endif; ?>
+	</div>
+</form>
