@@ -95,6 +95,9 @@ class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckout
         if ($varValue !== '0') {
             $this->Template->style = 'display:none;';
         }
+	if ($varValue == '0') {
+            $this->Template->style = '';
+        }
 
         $objAddress = $this->getAddressForOption($varValue, $blnValidate);
 
