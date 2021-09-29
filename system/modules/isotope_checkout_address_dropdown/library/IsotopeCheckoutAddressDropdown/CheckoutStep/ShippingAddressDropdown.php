@@ -27,7 +27,7 @@ use Isotope\Module\Checkout;
 
 
 /**
- * ShippingAddress checkout step lets the user enter a shipping address
+ * ShippingAddressDropdown checkout step lets the user enter a shipping address
  */
 class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckoutStep
 {
