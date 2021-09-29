@@ -48,19 +48,6 @@ class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckout
 					"tl_iso_shipping.id IN ('" .implode("','", $arrShippingModules) ."')", 
 					"tl_iso_shipping.type LIKE 'fedex'"
 			));
-					
-			$objShippingModule = FedExShippingModel::findAll($arrSearch);
-			if ($objShippingModule) {
-				foreach($objShippingModule->getModels() as $objModel) {
-					if ($objModel->fedExApiKey && $objModel->fedExApiPassword && $objModel->fedExAccountNumber && $objModel->fedExMeterNumber && $objModel->fedExMode) {
-						$this->strApiKey = $objModel->fedExApiKey;
-						$this->strApiPassword = $objModel->fedExApiPassword;
-						$this->strAccountNumber = $objModel->fedExAccountNumber;
-						$this->strMeterNumber = $objModel->fedExMeterNumber;
-						$this->strMode = $objModel->fedExMode;
-					}
-				}
-			}
 		}
 	}
 
