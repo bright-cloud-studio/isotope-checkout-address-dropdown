@@ -18,6 +18,6 @@
 ClassLoader::addClasses(array
 (
 	//'IsotopeFedEx\CheckoutStep\ShippingAddressVerify' 			=> 'system/modules/isotope_shipping_fedex/library/IsotopeFedEx/CheckoutStep/ShippingAddressVerify.php',
-	'IsotopeCheckoutAddressDropdown\CheckoutStep\BillingAddress' 		=> 'system/modules/isotope_checkout_address_dropdown/library/IsotopeCheckoutAddressDropdown/CheckoutStep/BillingAddress.php',
+	'IsotopeCheckoutAddressDropdown\CheckoutStep\BillingAddressDropdown' 		=> 'system/modules/isotope_checkout_address_dropdown/library/IsotopeCheckoutAddressDropdown/CheckoutStep/BillingAddressDropdown.php',
 	'IsotopeCheckoutAddressDropdown\CheckoutStep\ShippingAddressDropdown' 		=> 'system/modules/isotope_checkout_address_dropdown/library/IsotopeCheckoutAddressDropdown/CheckoutStep/ShippingAddressDropdown.php',
 ));
