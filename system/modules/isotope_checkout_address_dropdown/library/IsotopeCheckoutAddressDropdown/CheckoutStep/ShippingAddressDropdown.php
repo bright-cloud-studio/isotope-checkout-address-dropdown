@@ -44,15 +44,19 @@ class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckout
         $strBuffer  = '';
         $varValue   = '0';
         $arrOptions = $this->getAddressOptions();
+		
+	$strClass  = '';
 
         if (0 !== \count($arrOptions)) {
             foreach ($arrOptions as $option) {
                 if ($option['default']) {
-                    $varValue = $option['value'];
+                   	$varValue = $option['value'];
+			$strClass  = $GLOBALS['TL_FFL']['radio'];
                 }
+		else { $strClass  = $GLOBALS['TL_FFL']['select']; }
             }
 
-            $strClass  = $GLOBALS['TL_FFL']['select'];
+            //$strClass  = $GLOBALS['TL_FFL']['select'];
 
             /** @var \Widget $objWidget */
             $objWidget = new $strClass(
