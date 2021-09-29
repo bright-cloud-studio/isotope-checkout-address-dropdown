@@ -103,8 +103,8 @@ class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckout
             $this->setAddress($objAddress);
         }
 
-        //return $strBuffer;
-	return 'ASDF';
+        return $strBuffer;
+	//return 'ASDF';
     }
 	
 }
