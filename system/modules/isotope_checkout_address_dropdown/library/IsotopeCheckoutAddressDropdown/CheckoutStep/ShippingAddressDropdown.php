@@ -52,7 +52,7 @@ class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckout
                 }
             }
 
-            $strClass  = $GLOBALS['TL_FFL']['radio'];
+            $strClass  = $GLOBALS['TL_FFL']['select'];
 
             /** @var \Widget $objWidget */
             $objWidget = new $strClass(
