@@ -28,9 +28,9 @@ use Isotope\Module\Checkout;
 
 
 /**
- * ShippingAddressVerify checkout step lets the user enter a shipping address
+ * ShippingAddress checkout step lets the user enter a shipping address
  */
-class ShippingAddressVerify extends ShippingAddress implements IsotopeCheckoutStep
+class ShippingAddress extends ShippingAddress implements IsotopeCheckoutStep
 {
 
 	private $strApiKey;
