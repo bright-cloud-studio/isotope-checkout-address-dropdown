@@ -52,7 +52,7 @@ class BillingAddressDropdown extends BillingAddress implements IsotopeCheckoutSt
                 }
             }
 
-            $strClass  = $GLOBALS['TL_FFL']['radio'];
+            $strClass  = $GLOBALS['TL_FFL']['select'];
 
             /** @var \Widget $objWidget */
             $objWidget = new $strClass(
