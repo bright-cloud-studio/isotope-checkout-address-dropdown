@@ -24,7 +24,7 @@ use Isotope\Interfaces\IsotopeProductCollection;
 use Isotope\Isotope;
 use Isotope\Model\Address as AddressModel;
 use Isotope\Module\Checkout;
-
+use Model\Registry;
 
 /**
  * ShippingAddressDropdown checkout step lets the user enter a shipping address
