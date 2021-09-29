@@ -103,8 +103,8 @@ class BillingAddressDropdown extends BillingAddress implements IsotopeCheckoutSt
             $this->setAddress($objAddress);
         }
 
-        //return $strBuffer;
-	return 'ASDF';
+        return $strBuffer;
+	//return 'ASDF';
     }
 	
 }
