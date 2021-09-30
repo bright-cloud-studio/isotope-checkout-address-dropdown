@@ -103,7 +103,7 @@ class BillingAddressDropdown extends BillingAddress implements IsotopeCheckoutSt
             $this->setAddress($objAddress);
         }
 
-        return $strBuffer . '<span><input type="radio" name="billingaddress" id="opt_billingaddress_71" class="radio" value="0" required="" onclick="Isotope.toggleAddressFields(this, \'billingaddressdropdown_new\');"> <label id="lbl_billingaddress_71" for="opt_billingaddress_71">Create New Address</label></span>';
+        return $strBuffer . '<span><input type="radio" name="billingaddress" id="opt_billingaddress_71" class="radio" value="0" required="" onclick="Isotope.toggleAddressFields(this, &apos;billingaddressdropdown_new&apos;);"> <label id="lbl_billingaddress_71" for="opt_billingaddress_71">Create New Address</label></span>';
 	//return 'ASDF';
     }
 	
