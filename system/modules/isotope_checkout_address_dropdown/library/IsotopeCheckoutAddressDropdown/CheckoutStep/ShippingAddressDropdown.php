@@ -97,7 +97,7 @@ class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckout
 			$this->setAddress($objAddress);
 		}
 
-		return $strBuffer;
+		 return $strBuffer . '<span><input type="radio" name="shippingaddress" id="opt_shippingaddress_71" class="radio" value="0" required="" onclick="Isotope.toggleAddressFields(this, &apos;shippingaddressdropdown_new&apos;);"> <label id="lbl_shippingaddress_71" for="opt_shippingaddress_71">Create New Address</label></span>';
 		//return 'ASDF';
 	}
 	
