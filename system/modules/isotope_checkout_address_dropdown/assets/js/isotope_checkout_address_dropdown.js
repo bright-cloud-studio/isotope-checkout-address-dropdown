@@ -11,7 +11,7 @@ $('#ctrl_billingaddressdropdown').on('change', function() {
 
 // when making selection with select, change the create new address button
 $('#ctrl_shippingaddressdropdown').on('change', function() {
-  if(this.value == 0 || this.value == -1)
+  if(this.value == 0)
   {
     $("#opt_shippingaddress_71").prop("checked", true);
   } else {
