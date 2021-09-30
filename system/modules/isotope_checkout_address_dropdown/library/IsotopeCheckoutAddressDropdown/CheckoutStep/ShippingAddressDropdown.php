@@ -1,15 +1,14 @@
 <?php
 
-/**
- * FedEx Shipping Isotope eCommerce and Contao CMS
+/*
+ * Isotope Checkout Address Dropdown - Changes addresses into dropdown selects
  *
- * Copyright (C) 2020 Andrew Stevens Consulting
+ * Copyright (C) 2021 Bright Cloud Studio
  *
- * @package    isotope_shipping_fedex
- * @link       https://andrewstevens.consulting
+ * @package    bright-cloud-studio/isotope-checkout-address-dropdown
+ * @link       https://www.brightcloudstudio.com/
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
-
-
 
 namespace IsotopeCheckoutAddressDropdown\CheckoutStep;
 
@@ -30,18 +29,23 @@ class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckout
 	/* Overrides the default generateOptions function to apply our changes */
 	protected function generateOptions($blnValidate = false)
 	{
+		// this is the string we put the html into
 		$strBuffer  = '';
+		// this stores the Value
 		$varValue   = '0';
+		// this gets all of the addressess assigned to the user
 		$arrOptions = $this->getAddressOptions();
 
-
+		// if we have at least one value in $arrOptions
 		if (0 !== \count($arrOptions)) {
+			// loop through the options
 			foreach ($arrOptions as $option) {
+				// if the default option
 				if ($option['default']) {
 					$varValue = $option['value'];
 				}
 			}
-
+			// create a new widget based on contao select
 			$strClass  = $GLOBALS['TL_FFL']['select'];
 
 			/** @var \Widget $objWidget */
