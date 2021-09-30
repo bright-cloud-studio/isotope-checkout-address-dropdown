@@ -13,9 +13,6 @@
 
 namespace IsotopeCheckoutAddressDropdown\CheckoutStep;
 
-//use IsotopeFedEx\Model\Shipping\FedEx as FedExShippingModel;
-//use IsotopeFedEx\AddressValidator;
-
 use Contao\StringUtil;
 
 use Isotope\CheckoutStep\ShippingAddress;
@@ -26,86 +23,78 @@ use Isotope\Model\Address as AddressModel;
 use Isotope\Module\Checkout;
 use Model\Registry;
 
-/**
- * ShippingAddressDropdown checkout step lets the user enter a shipping address
- */
+/* Converts the addresses on checkout's Step 1 into a select, instead of radio buttons */
 class ShippingAddressDropdown extends ShippingAddress implements IsotopeCheckoutStep
 {
 
-	 /**
-	* Generate address options and return it as HTML string
-	*
-	* @param bool $blnValidate
-	*
-	* @return string
-	*/
+	/* Overrides the default generateOptions function to apply our changes */
 	protected function generateOptions($blnValidate = false)
-    {
-        $strBuffer  = '';
-        $varValue   = '0';
-        $arrOptions = $this->getAddressOptions();
-		
+	{
+		$strBuffer  = '';
+		$varValue   = '0';
+		$arrOptions = $this->getAddressOptions();
 
-        if (0 !== \count($arrOptions)) {
-            foreach ($arrOptions as $option) {
-                if ($option['default']) {
-                   	$varValue = $option['value'];
-                }
-            }
 
-            $strClass  = $GLOBALS['TL_FFL']['select'];
+		if (0 !== \count($arrOptions)) {
+			foreach ($arrOptions as $option) {
+				if ($option['default']) {
+					$varValue = $option['value'];
+				}
+			}
 
-            /** @var \Widget $objWidget */
-            $objWidget = new $strClass(
-                [
-                    'id'          => $this->getStepClass(),
-                    'name'        => $this->getStepClass(),
-                    'mandatory'   => true,
-                    'options'     => $arrOptions,
-                    'value'       => $varValue,
-                    'onchange'     => "Isotope.toggleAddressFields(this, '" . $this->getStepClass() . "_new');",
-                    'storeValues' => true,
-                    'tableless'   => true,
-                ]
-            );
+			$strClass  = $GLOBALS['TL_FFL']['select'];
 
-            // Validate input
-            if ($blnValidate) {
-                $objWidget->validate();
+			/** @var \Widget $objWidget */
+			$objWidget = new $strClass(
+				[
+					'id'          => $this->getStepClass(),
+					'name'        => $this->getStepClass(),
+					'mandatory'   => true,
+					'options'     => $arrOptions,
+					'value'       => $varValue,
+					'onchange'     => "Isotope.toggleAddressFields(this, '" . $this->getStepClass() . "_new');",
+					'storeValues' => true,
+					'tableless'   => true,
+				]
+			);
 
-                if ($objWidget->hasErrors()) {
-                    $this->blnError = true;
-                } else {
-                    $varValue = (string) $objWidget->value;
-                }
-            } elseif ($objWidget->value != '') {
-                \Input::setPost($objWidget->name, $objWidget->value);
+			// Validate input
+			if ($blnValidate) {
+				$objWidget->validate();
 
-                $objValidator = clone $objWidget;
-                $objValidator->validate();
+				if ($objWidget->hasErrors()) {
+					$this->blnError = true;
+				} else {
+					$varValue = (string) $objWidget->value;
+				}
+			} elseif ($objWidget->value != '') {
+				\Input::setPost($objWidget->name, $objWidget->value);
 
-                if ($objValidator->hasErrors()) {
-                    $this->blnError = true;
-                }
-            }
+				$objValidator = clone $objWidget;
+				$objValidator->validate();
 
-            $strBuffer .= $objWidget->parse();
-        }
+				if ($objValidator->hasErrors()) {
+					$this->blnError = true;
+				}
+			}
 
-        if ($varValue !== '0') {
-            $this->Template->style = 'display:none;';
-        }
+			$strBuffer .= $objWidget->parse();
+		}
 
-        $objAddress = $this->getAddressForOption($varValue, $blnValidate);
+		if ($varValue !== '0') {
+			$this->Template->style = 'display:none;';
+		}
 
-        if (null === $objAddress || !Registry::getInstance()->isRegistered($objAddress)) {
-            $this->blnError = true;
-        }  elseif ($blnValidate) {
-            $this->setAddress($objAddress);
-        }
+		$objAddress = $this->getAddressForOption($varValue, $blnValidate);
 
-        return $strBuffer;
-	//return 'ASDF';
-    }
+		if (null === $objAddress || !Registry::getInstance()->isRegistered($objAddress)) {
+			$this->blnError = true;
+		}  elseif ($blnValidate) {
+			$this->setAddress($objAddress);
+		}
+
+		return $strBuffer;
+		//return 'ASDF';
+	}
 	
 }
