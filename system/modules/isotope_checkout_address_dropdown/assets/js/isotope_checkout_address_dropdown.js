@@ -1,4 +1,4 @@
-// if billing address selects create new address, radio matches.
+// when making selection with select, change the create new address button
 $('#ctrl_billingaddressdropdown').on('change', function() {
   if(this.value == 0)
   {
@@ -8,7 +8,8 @@ $('#ctrl_billingaddressdropdown').on('change', function() {
   }
 });
 
-// if shipping address selects create new address, radio matches
+
+// when making selection with select, change the create new address button
 $('#ctrl_shippingaddressdropdown').on('change', function() {
   if(this.value == 0)
   {
@@ -18,7 +19,21 @@ $('#ctrl_shippingaddressdropdown').on('change', function() {
   }
 });
 
-// if billing radio checked, select matches
 
+// when checking billing address radio, make select match
+$('input:radio[name="billingaddress"]').change(
+    function(){
+        if ($(this).is(':checked')) {
+            // append goes here
+            $("#ctrl_billingaddressdropdown").val("0").change();
+        }
+    });
 
-// if shipping radio checked, select matches
+// when checking shipping address radio, make select match
+$('input:radio[name="shippingaddress"]').change(
+    function(){
+        if ($(this).is(':checked')) {
+            // append goes here
+            $("#ctrl_shippingaddressdropdown").val("0").change();
+        }
+    });
