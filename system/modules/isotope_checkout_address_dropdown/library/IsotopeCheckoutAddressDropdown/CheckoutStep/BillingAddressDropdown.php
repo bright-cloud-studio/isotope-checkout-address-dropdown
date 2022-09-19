@@ -42,10 +42,7 @@ class BillingAddressDropdown extends BillingAddress implements IsotopeCheckoutSt
 	protected function generateOptions($blnValidate = false)
     {
 		
-	// add custom js script to sync select and radio behavior
-	if (!in_array('<script src="system/modules/isotope_checkout_address_dropdown/assets/js/isotope_checkout_address_dropdown.js"></script>', $GLOBALS['TL_BODY'])) { 
-		$GLOBALS['TL_BODY'][] = '<script src="system/modules/isotope_checkout_address_dropdown/assets/js/isotope_checkout_address_dropdown.js"></script>';
-	}
+	$GLOBALS['TL_BODY'][] = '<script src="system/modules/isotope_checkout_address_dropdown/assets/js/isotope_checkout_address_dropdown.js"></script>';
 		
 		
         $strBuffer  = '';
